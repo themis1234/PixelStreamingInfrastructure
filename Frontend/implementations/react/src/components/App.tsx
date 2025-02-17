@@ -1,26 +1,18 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 import React from 'react';
-import { PixelStreamingWrapper } from './PixelStreamingWrapper';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
 
-export const App = () => {
-    return (
-        <div
-            style={{
-                height: '100%',
-                width: '100%'
-            }}
-        >
-            <PixelStreamingWrapper
-                initialSettings={{
-                    AutoPlayVideo: true,
-                    AutoConnect: true,
-                    ss: 'ws://localhost:80',
-                    StartVideoMuted: true,
-                    HoveringMouse: true,
-                    WaitForStreamer: true
-                }}
-            />
-        </div>
-    );
+const App: React.FC = () => {
+    console.log("App component rendered!");
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </HashRouter>
+  );
 };
+
+export default App;

@@ -1,0 +1,27 @@
+/* app/layout.module.css */
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* This wrapper holds both the mini sidebar and the main sidebar next to each other */
+  .sidebars {
+    display: flex;
+    flex-direction: row;
+    /* The total width depends on how wide you want each sidebar:
+       e.g., 60px for mini + 300px for main = 360px. Adjust as needed. */
+    width: 360px;
+    overflow: hidden; /* optional if you want to hide overflow */
+  }
+  
+  .mainContent {
+    flex: 1;                /* Take all remaining space */
+    background-color: #222; /* or anything you like */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  

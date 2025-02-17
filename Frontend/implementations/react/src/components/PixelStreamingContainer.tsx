@@ -1,0 +1,76 @@
+// src/components/PixelStreamingContainer.tsx
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Sidebars from './Sidebars'; // Adjust the import path if needed.
+import { Config, PixelStreaming } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.4';
+import { Application, PixelStreamingApplicationStyle } from '@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4';
+import styles from './PixelStreamingContainer.module.css';
+// Extend the global Window interface to include pixelStreaming.
+declare global {
+  interface Window {
+    pixelStreaming: PixelStreaming;
+  }
+}
+
+const PixelStreamingContainer: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Perform any necessary cleanup here before logging out.
+    navigate('/login');
+  };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Create and apply the style sheet for the Pixel Streaming application.
+    const pixelStreamingStyles = new PixelStreamingApplicationStyle();
+    pixelStreamingStyles.applyStyleSheet();
+
+    // Create a config object. Here, using URL parameters is enabled.
+    const config = new Config({ useUrlParams: true });
+
+    // Create a new Pixel Streaming instance.
+    const stream = new PixelStreaming(config);
+
+    // Create the Pixel Streaming application, specifying a callback for color mode changes.
+    const application = new Application({
+      stream,
+      onColorModeChanged: (isLightMode: boolean) => {
+        pixelStreamingStyles.setColorMode(isLightMode);
+      },
+    });
+
+    // Append the application’s root element to the container.
+    containerRef.current.appendChild(application.rootElement);
+
+    // Expose the Pixel Streaming object globally for testing or other hooks.
+    window.pixelStreaming = stream;
+
+    // Cleanup: remove the application element when the component unmounts.
+    return () => {
+      if (containerRef.current && application.rootElement.parentNode === containerRef.current) {
+        containerRef.current.removeChild(application.rootElement);
+      }
+    };
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      {/* Render the sidebars */}
+      <Sidebars />
+
+      {/* Main content area */}
+      <main className={styles.mainContent}>
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Logout
+        </button>
+        {/* The Pixel Streaming application will be appended inside this container */}
+        <div ref={containerRef} className={styles.pixelStreamingContainer} />
+      </main>
+    </div>
+  );
+};
+
+export default PixelStreamingContainer;

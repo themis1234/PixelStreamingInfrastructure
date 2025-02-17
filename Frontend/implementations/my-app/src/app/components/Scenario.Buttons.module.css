@@ -1,0 +1,24 @@
+/* app/components/ScenarioButtons.module.css */
+
+.buttonList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .scenarioButton {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: left;
+    transition: background-color 0.2s;
+  }
+  
+  .scenarioButton:hover {
+    background-color: #e6e6e6;
+  }
+  

@@ -9,7 +9,7 @@
     "watch": "npx webpack --watch",
     "serve": "webpack serve --config webpack.dev.js",
     "serve-prod": "webpack serve --config webpack.prod.js",
-    "build-all": "npm link ../../library && cd ../../library && npm run build && cd ../implementations/react && npm run build",
+    "build-all": "cd ../../library && npm run build && cd ../ui-library && npm run build-all && cd ../implementations/typescript && npm link ../../library ../../ui-library && npm run build",
     "build-dev-all": "npm link ../../library && cd ../../library && npm run build-dev && cd ../implementations/react && npm run build-dev"
   },
   "devDependencies": {
@@ -19,6 +19,7 @@
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "path": "^0.12.7",
+    "style-loader": "^4.0.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
     "webpack": "^5.76.0",
@@ -26,7 +27,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@epicgames-ps/lib-pixelstreamingfrontend-ue5.4": "^1.1.5",
+    "@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4": "^1.0.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.1.5"
   }
 }

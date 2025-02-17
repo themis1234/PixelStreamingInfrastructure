@@ -1,0 +1,25 @@
+/* app/components/SideBar.module.css */
+
+.sidebar {
+    width: 300px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #0F2740;
+  }
+  
+  .titleBar {
+    margin-bottom: 24px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .location {
+    margin-top: 8px;
+    color: #e54b4b;
+  }
+  

@@ -1,0 +1,26 @@
+/* app/components/Sidebars.module.css */
+
+.sidebars {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* Make them all match full height */
+  }
+  
+  /* A small column for the toggle button. Adjust width as you like. */
+  .toggleButton {
+    width: 32px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    /* Make it fill the height so it looks like a vertical bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toggleButton:hover {
+    background-color: #777;
+  }
+  
