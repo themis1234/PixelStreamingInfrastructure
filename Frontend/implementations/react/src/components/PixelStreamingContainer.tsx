@@ -1,7 +1,7 @@
 // src/components/PixelStreamingContainer.tsx
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebars from './Sidebars'; // Adjust the import path if needed.
+import Sidebars from './SideBars'; 
 import { Config, PixelStreaming } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.4';
 import { Application, PixelStreamingApplicationStyle } from '@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4';
 import styles from './PixelStreamingContainer.module.css';

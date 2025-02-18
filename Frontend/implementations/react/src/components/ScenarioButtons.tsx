@@ -1,15 +1,24 @@
 // app/components/ScenarioButtons.tsx
-'use client'
 
 import React from 'react'
 import styles from './Scenario.Buttons.module.css'
+import {Config, PixelStreaming } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.4';
+
+const config = new Config({ useUrlParams: true });
+const pixelstreaming = new PixelStreaming(config);
 export default function ScenarioButtons() {
   const scenarios = [
-    { label: 'Run Baseline Scenario', onClick: () => alert('Baseline') },
-    { label: 'Scenario A', onClick: () => alert('Scenario A') },
-    { label: 'Scenario B', onClick: () => alert('Scenario B') },
-    { label: 'Scenario C', onClick: () => alert('Scenario C') },
+    { label: 'Run Baseline Scenario', scenarioName: 'Baseline' },
+    { label: 'Scenario A', scenarioName: 'A' },
+    { label: 'Scenario B', scenarioName: 'B' },
+    { label: 'Scenario C', scenarioName: 'C' },
   ]
+
+  const handleScenarioClick = (scenarioName: string) => {
+    const scenarioData = { Scenario: scenarioName };
+    console.log('Sending scenario data:', scenarioData);
+    pixelstreaming.emitUIInteraction(scenarioData);
+  };
 
   return (
     <div className={styles.buttonList}>
@@ -17,7 +26,7 @@ export default function ScenarioButtons() {
         <button
           key={idx}
           className={styles.scenarioButton}
-          onClick={scenario.onClick}
+          onClick={() => handleScenarioClick(scenario.scenarioName)}
         >
           {scenario.label}
         </button>
