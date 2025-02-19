@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backround from '../assets/images/backround.png';
-import documentation from '../docs/documentation'
-import userguide from '../docs/userguide'
-
+import documentation from '../static_text/documentation'
+import userguide from '../static_text/userguide'
 export default function LoginPage() {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
