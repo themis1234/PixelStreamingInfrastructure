@@ -9,18 +9,21 @@
   /* A small column for the toggle button. Adjust width as you like. */
   .toggleButton {
     width: 32px;
-    background-color: #555;
+    background-color: #31B2BA;
     color: #fff;
     border: none;
     cursor: pointer;
     font-size: 1.1rem;
-    /* Make it fill the height so it looks like a vertical bar */
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 0; /* Remove default padding */
   }
-  
+
   .toggleButton:hover {
     background-color: #777;
   }
   
+  .toggleButton svg {
+  display: block; /* Eliminates extra inline space */
+  margin: 0;
+}

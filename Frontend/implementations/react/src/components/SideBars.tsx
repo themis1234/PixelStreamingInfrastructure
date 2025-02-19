@@ -1,7 +1,7 @@
-// app/components/Sidebars.tsx
 'use client'
 
 import React, { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import styles from './Sidebars.module.css'
 import MiniSideBar from './MiniSideBar'
 import SideBar from './SideBar'
@@ -14,9 +14,6 @@ export default function Sidebars() {
     setBigSidebarOpen((prev) => !prev)
   }
 
-  // Decide which arrow to show
-  const arrow = bigSidebarOpen ? '←' : '→'
-
   return (
     <div className={styles.sidebars}>
       {/* Always show the mini sidebar */}
@@ -24,7 +21,7 @@ export default function Sidebars() {
 
       {/* Toggle button sits between mini and big sidebar */}
       <button className={styles.toggleButton} onClick={toggleBigSidebar}>
-        {arrow}
+        {bigSidebarOpen ? <ChevronLeft size={70} strokeWidth={2} style={{marginLeft:'-10px', marginRight:'-10px'}} /> : <ChevronRight size={70} strokeWidth={2} style={{marginLeft:'-10px', marginRight:'-10px'}} />}
       </button>
 
       {/* Conditionally render the big sidebar */}

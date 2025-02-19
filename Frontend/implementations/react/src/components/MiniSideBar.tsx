@@ -1,23 +1,38 @@
 // app/components/MiniSideBar.tsx
 import styles from './MiniSideBar.module.css'
-console.log(styles)
+import {
+  Search,
+  MapPin,
+  Home,
+  Layers,
+  Zap,
+  Thermometer,
+  SlidersHorizontal,
+  ChartNoAxesCombined,
+  FileText
+} from 'lucide-react';
+
+
 export default function MiniSideBar() {
-  // Example: an array of button labels or icons
   const miniButtons = [
-    { label: 'Btn 1', onClick: () => alert('Btn 1') },
-    { label: 'Btn 2', onClick: () => alert('Btn 2') },
-    { label: 'Btn 3', onClick: () => alert('Btn 3') },
-    { label: 'Btn 4', onClick: () => alert('Btn 4') },
-    // ...add as many as you need
-  ]
+    { icon: <Search />, onClick: () => alert('Search') },
+    { icon: <MapPin />, onClick: () => alert('Location') },
+    { icon: <Home />, onClick: () => alert('Home') },
+    { icon: <Layers />, onClick: () => alert('Stack') },
+    { icon: <Zap />, onClick: () => alert('Thunder') },
+    { icon: <Thermometer />, onClick: () => alert('Thermometer') },
+    { icon: <SlidersHorizontal />, onClick: () => alert('Settings') },
+    { icon: <ChartNoAxesCombined />, onClick: () => alert('Stats') },
+    { icon: <FileText />, onClick: () => alert('PDF') },
+  ];
 
   return (
     <div className={styles.miniSideBar}>
       {miniButtons.map((b, idx) => (
         <button key={idx} onClick={b.onClick} className={styles.miniButton}>
-          {b.label}
+          {b.icon}
         </button>
       ))}
     </div>
-  )
+  );
 }

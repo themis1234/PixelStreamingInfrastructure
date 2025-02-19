@@ -1,12 +1,13 @@
 /* app/components/MiniSideBar.module.css */
 
 .miniSideBar {
+    
     width: 60px;          /* or whatever narrow width you want */
-    background-color: #333;
+    background-color: #08192B;
     display: flex;
     flex-direction: column;
     align-items: center;  /* center icons horizontally */
-    padding: 8px 0;       /* some vertical padding */
+    padding: 10vh 0 8px; /* 20px top padding, 8px bottom padding */
   }
   
   .miniButton {

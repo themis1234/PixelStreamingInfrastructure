@@ -29,6 +29,7 @@
   "dependencies": {
     "@epicgames-ps/lib-pixelstreamingfrontend-ue5.4": "^1.1.5",
     "@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4": "^1.0.5",
+    "lucide-react": "^0.475.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.1.5"

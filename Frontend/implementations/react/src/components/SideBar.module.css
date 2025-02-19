@@ -1,25 +1,66 @@
 /* app/components/SideBar.module.css */
 
 .sidebar {
-    width: 300px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    background-color: #0F2740;
-  }
-  
-  .titleBar {
-    margin-bottom: 24px;
-  }
-  
-  .logo {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .location {
-    margin-top: 8px;
-    color: #e54b4b;
-  }
-  
+  width: 300px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #08192B;
+}
+
+.titleBar {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* User info positioned in the top-right */
+.userInfo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem; /* Smaller text */
+  color: #fff; /* Keeps the color consistent */
+}
+
+.userIcon {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+}
+
+.userName {
+  font-weight: normal;
+}
+
+/* Keeps original logo styling */
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Location inside a red box with sharp corners */
+.location {
+  margin-top: 50px;
+  margin-bottom: 24px;
+  background-color: #ff0000; /* Red background */
+  color: #fff; /* White text */
+  padding: 6px 12px; /* Padding for spacing */
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: inline-block; /* Prevents full width stretching */
+}
+.scenarioButton {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: left;
+  transition: background-color 0.2s;
+}
