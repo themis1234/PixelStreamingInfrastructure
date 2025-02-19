@@ -6,7 +6,7 @@ import { User } from 'lucide-react' // Importing a user icon
 import styles from './SideBar.module.css'
 import ScenarioButtons from './ScenarioButtons'
 
-export default function SideBar() {
+export default function SideBar({}) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.titleBar}>

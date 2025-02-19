@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backround from '../assets/images/backround.png';
+import documentation from '../docs/documentation'
+import userguide from '../docs/userguide'
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -223,7 +225,16 @@ export default function LoginPage() {
         onClick={(e) => e.stopPropagation()} // Prevent click from resetting activeText when clicking inside right section
       >
         {/* Top Right Buttons */}
-        <div style={{ position: 'absolute', top: '20px', right: '20px', display: 'flex', gap: '10px' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            display: 'flex',
+            gap: '10px',
+            zIndex: 10, // Ensure buttons stay above the text
+          }}
+        >
           <button
             onClick={(e) => {
               e.stopPropagation(); // Prevent click from propagating to the parent div
@@ -235,7 +246,7 @@ export default function LoginPage() {
               backgroundColor: activeText === 'text1' ? '#666' : 'transparent', // Gray when selected, transparent otherwise
               color: 'white',
               borderRadius: '5px',
-              border: 'None',
+              border: 'none',
               cursor: 'pointer',
               transition: 'background 0.3s, border 0.3s',
             }}
@@ -250,10 +261,10 @@ export default function LoginPage() {
             style={{
               padding: '10px 15px',
               fontSize: '1rem',
-              backgroundColor: activeText === 'text2' ? '#666' : 'transparent', // Gray when selected, transparent otherwise
+              backgroundColor: activeText === 'text2' ? '#666' : 'transparent',
               color: 'white',
               borderRadius: '5px',
-              border: 'None',
+              border: 'none',
               cursor: 'pointer',
               transition: 'background 0.3s, border 0.3s',
             }}
@@ -263,10 +274,50 @@ export default function LoginPage() {
         </div>
 
         {/* Display Active Text */}
-        <div style={{ textAlign: 'center', maxWidth: '80%', fontSize: '1.2rem' }}>
-          {activeText === 'text1' && <p>User Guide</p>}
-          {activeText === 'text2' && <p>Documentation</p>}
+        <div
+          style={{
+            position: 'absolute',
+            top: '100px', // Place it below the buttons
+            right: '20px',
+            width: '50vw', // Adjust width as needed
+            maxHeight: 'calc(100vh - 130px)', // Limit height so it doesn't go beyond the screen
+            overflowY: 'auto', // Make content scrollable when it exceeds the container height
+            backgroundColor: 'transparent', // Slight background for readability
+            padding: '10px',
+            borderRadius: '5px',
+            color: 'white',
+            textAlign: 'left',
+          }}
+        >
+          <style>
+          {`
+            /* For Chrome, Edge, and Safari */
+            div::-webkit-scrollbar {
+              width: 8px;
+            }
+
+            div::-webkit-scrollbar-track {
+              background: transparent;
+            }
+
+            div::-webkit-scrollbar-thumb {
+              background: rgba(150, 150, 150, 0.5);
+              border-radius: 10px;
+            }
+
+            div::-webkit-scrollbar-thumb:hover {
+              background: rgba(150, 150, 150, 0.7);
+            }
+          `}
+        </style>
+          {activeText === 'text1' && (
+            <div dangerouslySetInnerHTML={{ __html: userguide }} />
+          )}
+          {activeText === 'text2' && (
+            <div dangerouslySetInnerHTML={{ __html: documentation }} />
+          )}
         </div>
+
       </div>
     </div>
   );
