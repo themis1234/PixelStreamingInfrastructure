@@ -58,7 +58,7 @@ const ProjectSelection: React.FC = () => {
           top: 0,
           bottom: 0,
           left: 0,
-          height: '100vw',
+          height: '100vh',
           transition: 'width 0.3s',
           background: 'transparent',
           overflow: 'hidden',
