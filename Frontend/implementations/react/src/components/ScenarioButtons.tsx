@@ -8,10 +8,10 @@ interface ScenarioButtonsProps {
 
 export default function ScenarioButtons({ pixelStreaming }: ScenarioButtonsProps) {
   const scenarios = [
-    { label: 'Run Baseline Scenario', scenarioName: 'Baseline' },
-    { label: 'Scenario A', scenarioName: 'A' },
-    { label: 'Scenario B', scenarioName: 'B' },
-    { label: 'Scenario C', scenarioName: 'C' },
+    // { label: 'Run Baseline Scenario', scenarioName: 'Baseline' },
+    { label: 'Incident Radiation', scenarioName: 'A' },
+    { label: 'PV Capacity', scenarioName: 'B' },
+    { label: 'Nominal Yield', scenarioName: 'C' },
   ];
 
   const handleScenarioClick = (scenarioName: string) => {
