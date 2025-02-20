@@ -58,16 +58,19 @@ export default function LoginPage() {
           padding: '20px',
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
           borderRadius: '10px',
-          border: '1px solid red',
+          minHeight: '60vh', // Ensure the form does not collapse
+          overflowY: 'auto', // Enable scrolling if needed
+          paddingBottom: '20px', // Prevent form fields from overlapping buttons
 
         }}
       >
         <div
           style={{
-            position: 'absolute',
+            marginTop:'20%',
             top: '20%',
             display: 'flex',
             gap: '10px',
+
           }}
         >
           <button
@@ -99,8 +102,8 @@ export default function LoginPage() {
             Sign Up
           </button>
         </div>
-
-        <div style={{ marginTop: '150px', width: '80%', paddingTop: '150px' }}>
+        {/* <div style={{height:'25%'}}/> */}
+        <div style={{ width: '80%'}}>
           <h2>{isSignUp ? 'Create an Account' : 'Sign In'}</h2>
           <label style={{ color: 'white', fontWeight: 'bold', display: 'block', textAlign: 'left' }}>Email</label>
           <input

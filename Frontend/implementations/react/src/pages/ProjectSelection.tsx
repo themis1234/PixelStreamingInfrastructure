@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import Sidebars from '../components/SideBars'; // Your sidebar component
 import styles from '../components/styles.module.css'
+import { useNavigate } from 'react-router-dom';
 
 // Custom marker icon for Leaflet in React
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -18,8 +19,7 @@ const customIcon = new L.Icon({
 });
 
 const ProjectSelection: React.FC = () => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const toggleSidebar = () => setSidebarCollapsed(prev => !prev);
+  const navigate = useNavigate()
 
   const gothenburgPosition: [number, number] = [57.7089, 11.9746]; // Map center
   const jättestenPosition: [number, number] = [57.7193, 11.9121]; // Marker position
@@ -45,10 +45,10 @@ const ProjectSelection: React.FC = () => {
             icon={customIcon}
             eventHandlers={{
                 click: () => {
-                window.location.href = '/'; // change this URL to your desired route
+                    navigate('/'); // Redirects to the home page
                 },
             }}
-            />
+/>
       </MapContainer>
 
       {/* Sidebar overlay */}
