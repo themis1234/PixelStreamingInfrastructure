@@ -16,7 +16,7 @@ export default function LoginPage() {
 
   const handleAuth = () => {
     // Add authentication logic here
-    navigate('/');
+    navigate('/projects');
   };
 
   return (
@@ -36,10 +36,11 @@ export default function LoginPage() {
           style={{
             position: 'absolute',
             top: 0,
-            left: '40%', // Only dim the right side
-            width: '60%',
+            left: 'calc(40vw + 8px)', // Only dim the right side
+            width: 'calc(60vw)',
             height: '100%',
             backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dim effect
+
           }}
         /> 
       )}
@@ -48,7 +49,7 @@ export default function LoginPage() {
         style={{
           position: 'relative',
           zIndex: 1,
-          width: '40%',
+          width: '40vw',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -57,6 +58,8 @@ export default function LoginPage() {
           padding: '20px',
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
           borderRadius: '10px',
+          border: '1px solid red',
+
         }}
       >
         <div
@@ -161,7 +164,7 @@ export default function LoginPage() {
         style={{
           position: 'relative',
           zIndex: 1,
-          width: '40%',
+          width: '40vw',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -204,6 +207,7 @@ export default function LoginPage() {
       )}
       <div
         style={{
+          zIndex:5,
           width: '3px',
           backgroundColor: 'cyan',
           height: '100vh',

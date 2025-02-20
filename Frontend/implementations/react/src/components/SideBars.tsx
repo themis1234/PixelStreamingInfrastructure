@@ -1,31 +1,42 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import styles from './Sidebars.module.css'
-import MiniSideBar from './MiniSideBar'
-import SideBar from './SideBar'
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import styles from './Sidebars.module.css';
+import MiniSideBar from './MiniSideBar';
+import SideBar from './SideBar';
+import GraphPanel from './GraphPanel';
 
-export default function Sidebars() {
-  // State to track whether the big sidebar is open
-  const [bigSidebarOpen, setBigSidebarOpen] = useState(true)
+interface SideBarProps {
+  children?: React.ReactNode;
+}
+
+export default function Sidebars({ children }: SideBarProps) {
+  const [bigSidebarOpen, setBigSidebarOpen] = useState(true);
+  const [graphPanelOpen, setGraphPanelOpen] = useState(false);
 
   const toggleBigSidebar = () => {
-    setBigSidebarOpen((prev) => !prev)
-  }
+    setBigSidebarOpen((prev) => !prev);
+  };
+
+  const toggleGraphPanel = () => {
+    setGraphPanelOpen((prev) => !prev);
+  };
 
   return (
-    <div className={styles.sidebars}>
-      {/* Always show the mini sidebar */}
-      <MiniSideBar />
+    <>
+      <div className={styles.sidebars}>
+        <MiniSideBar onStatsClick={toggleGraphPanel} />
 
-      {/* Toggle button sits between mini and big sidebar */}
-      <button className={styles.toggleButton} onClick={toggleBigSidebar}>
-        {bigSidebarOpen ? <ChevronLeft size={70} strokeWidth={2} style={{marginLeft:'-10px', marginRight:'-10px'}} /> : <ChevronRight size={70} strokeWidth={2} style={{marginLeft:'-10px', marginRight:'-10px'}} />}
-      </button>
+        <button className={styles.toggleButton} onClick={toggleBigSidebar}>
+          {bigSidebarOpen ? <ChevronLeft size={70} strokeWidth={2} /> : <ChevronRight size={70} strokeWidth={2} />}
+        </button>
 
-      {/* Conditionally render the big sidebar */}
-      {bigSidebarOpen && <SideBar />}
-    </div>
-  )
+        {bigSidebarOpen && <SideBar>{children}</SideBar>}
+      </div>
+
+      {/* Ensure GraphPanel is outside of Sidebars and positioned correctly */}
+      {graphPanelOpen && <GraphPanel />}
+    </>
+  );
 }

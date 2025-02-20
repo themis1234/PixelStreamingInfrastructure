@@ -51,7 +51,7 @@
   padding: 6px 12px; /* Padding for spacing */
   font-size: 0.9rem;
   font-weight: bold;
-  display: inline-block; /* Prevents full width stretching */
+  text-align: center;
 }
 .scenarioButton {
   background-color: #fff;

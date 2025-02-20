@@ -1,0 +1,13 @@
+.graphPanel {
+    position: fixed; /* Fix position relative to the viewport */
+    top: 0;
+    right: 0; /* Move it to the right side of the screen */
+    width: 400px; /* Adjust width as needed */
+    height: 100vh; /* Full height */
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on left side */
+    padding: 20px;
+    z-index: 1000; /* Ensure it appears above other elements */
+    transition: transform 0.3s ease-in-out;
+  }
+  

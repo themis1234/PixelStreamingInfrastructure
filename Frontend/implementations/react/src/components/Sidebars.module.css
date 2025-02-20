@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: row;
     align-items: stretch; /* Make them all match full height */
+    height: 100vh
   }
   
   /* A small column for the toggle button. Adjust width as you like. */

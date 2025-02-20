@@ -1,19 +1,11 @@
-// app/components/MiniSideBar.tsx
-import styles from './MiniSideBar.module.css'
-import {
-  Search,
-  MapPin,
-  Home,
-  Layers,
-  Zap,
-  Thermometer,
-  SlidersHorizontal,
-  ChartNoAxesCombined,
-  FileText
-} from 'lucide-react';
+import styles from './MiniSideBar.module.css';
+import { Search, MapPin, Home, Layers, Zap, Thermometer, SlidersHorizontal, ChartNoAxesCombined, FileText } from 'lucide-react';
 
+interface MiniSideBarProps {
+  onStatsClick: () => void;
+}
 
-export default function MiniSideBar() {
+export default function MiniSideBar({ onStatsClick }: MiniSideBarProps) {
   const miniButtons = [
     { icon: <Search />, onClick: () => alert('Search') },
     { icon: <MapPin />, onClick: () => alert('Location') },
@@ -22,7 +14,7 @@ export default function MiniSideBar() {
     { icon: <Zap />, onClick: () => alert('Thunder') },
     { icon: <Thermometer />, onClick: () => alert('Thermometer') },
     { icon: <SlidersHorizontal />, onClick: () => alert('Settings') },
-    { icon: <ChartNoAxesCombined />, onClick: () => alert('Stats') },
+    { icon: <ChartNoAxesCombined />, onClick: onStatsClick }, // Open Graph Panel
     { icon: <FileText />, onClick: () => alert('PDF') },
   ];
 

@@ -2,11 +2,14 @@
 'use client'
 
 import React from 'react'
-import { User } from 'lucide-react' // Importing a user icon
+import { User } from 'lucide-react'
 import styles from './SideBar.module.css'
-import ScenarioButtons from './ScenarioButtons'
 
-export default function SideBar({}) {
+interface SideBarProps {
+  children?: React.ReactNode
+}
+
+export default function SideBar({ children }: SideBarProps) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.titleBar}>
@@ -14,12 +17,8 @@ export default function SideBar({}) {
           <User className={styles.userIcon} size={16} />
           <span className={styles.userName}>Poseidon</span>
         </div>
-        
       </div>
-      <div className={styles.location}>
-          Jättesten, Gothenburg, Sweden
-        </div>
-      <ScenarioButtons />
+      {children}
     </div>
   )
 }

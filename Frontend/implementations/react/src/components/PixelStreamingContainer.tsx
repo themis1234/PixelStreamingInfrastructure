@@ -1,10 +1,12 @@
-// src/components/PixelStreamingContainer.tsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebars from './SideBars'; 
 import { Config, PixelStreaming } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.4';
 import { Application, PixelStreamingApplicationStyle } from '@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.4';
 import styles from './PixelStreamingContainer.module.css';
+import ScenarioButtons from './ScenarioButtons';
+import locstyles from './styles.module.css';
+
 // Extend the global Window interface to include pixelStreaming.
 declare global {
   interface Window {
@@ -15,6 +17,7 @@ declare global {
 const PixelStreamingContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+  const [pixelStreamingInstance, setPixelStreamingInstance] = useState<PixelStreaming | null>(null);
 
   const handleLogout = () => {
     // Perform any necessary cleanup here before logging out.
@@ -33,6 +36,7 @@ const PixelStreamingContainer: React.FC = () => {
 
     // Create a new Pixel Streaming instance.
     const stream = new PixelStreaming(config);
+    setPixelStreamingInstance(stream);
 
     // Create the Pixel Streaming application, specifying a callback for color mode changes.
     const application = new Application({
@@ -59,7 +63,15 @@ const PixelStreamingContainer: React.FC = () => {
   return (
     <div className={styles.container}>
       {/* Render the sidebars */}
-      <Sidebars />
+      <Sidebars>
+        <div>
+          <div className={locstyles.location}>
+            Jättesten, Gothenburg, Sweden
+          </div>
+          {/* Ensure that the instance is set before rendering the buttons */}
+          {pixelStreamingInstance && <ScenarioButtons pixelStreaming={pixelStreamingInstance} />}
+        </div>
+      </Sidebars>
 
       {/* Main content area */}
       <main className={styles.mainContent}>
