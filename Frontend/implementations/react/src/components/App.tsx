@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import ProjectSelection from '../pages/ProjectSelection';
+import ConsumptionPage from '../pages/GraphTest';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/projects" element={<ProjectSelection />} />
+        <Route path="/graph" element={<ConsumptionPage />} />
       </Routes>
     </HashRouter>
   );

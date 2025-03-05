@@ -1,13 +1,43 @@
 .graphPanel {
-    position: fixed; /* Fix position relative to the viewport */
-    top: 0;
-    right: 0; /* Move it to the right side of the screen */
-    width: 400px; /* Adjust width as needed */
-    height: 100vh; /* Full height */
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on left side */
-    padding: 20px;
-    z-index: 1000; /* Ensure it appears above other elements */
-    transition: transform 0.3s ease-in-out;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 35vw;
+  max-width: 600px; /* cap maximum width */
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  overflow: auto; /* scroll if content exceeds the panel */
   
+  /* Arrange header and graphs vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.graphContainer {
+  /* Grid with two columns: chart on left, legend on right */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: start; /* Align content at the top */
+  margin-bottom: 20px; /* Space between graphs */
+}
+
+.chartWrapper {
+  transition: transform 0.3s ease; /* For any zooming effect */
+}
+
+.legendWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  flex-shrink: 0; /* Prevent legend from shrinking */
+}
+
